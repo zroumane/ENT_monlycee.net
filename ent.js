@@ -62,7 +62,7 @@ export default class ENT {
     return await this.parseResult(r);
   }
 
-  async searchUser(query) {
+  async searchUsers(query) {
     let data = await this.post("communication/visible", {
       search: query,
     });
@@ -70,6 +70,7 @@ export default class ENT {
   }
 
   async getUser(id) {
-    return;
+    let data = await this.get("userbook/api/person?id=" + id);
+    return data.result;
   }
 }

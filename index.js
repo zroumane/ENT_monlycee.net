@@ -7,5 +7,7 @@ await client.auth({
   password: process.env.PASSWORD,
 });
 
-let data = await client.searchUser("zephyr");
-console.log(data);
+let users = await client.searchUsers("zephyr");
+console.log(users);
+let user = await client.getUser("69ab57d1-eea9-42c1-8ccc-016095a54366");
+console.log(user);
