@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 
 export default class ENT {
   constructor() {
-    this.cookie = "";
+    this.cookie = undefined;
   }
 
   async auth(credentials) {
@@ -69,8 +69,9 @@ export default class ENT {
     return data.users;
   }
 
-  async getUser(id) {
+  async getUser(id, related) {
     let data = await this.get("userbook/api/person?id=" + id);
-    return data.result;
+    if (related) return data.result.map((p) => p.relatedName);
+    else return data.result;
   }
 }
