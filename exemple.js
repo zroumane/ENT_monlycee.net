@@ -7,7 +7,9 @@ await client.auth({
   password: process.env.PASSWORD,
 });
 
-let users = await client.searchUsers("andrea");
+const id = 'kjef'
+
+let users = await client.getGroup(id);
 users.forEach(async (user) => {
   let related = await client.getUser(user.id, true);
   console.log(user.profile, user.displayName, "Related :", related.join(", "));

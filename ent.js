@@ -69,6 +69,11 @@ export default class ENT {
     return data.users;
   }
 
+  async getGroup(id) {
+    let data = await this.get("communication/visible/group/" + id);
+    return data;
+  }
+
   async getUser(id, related) {
     let data = await this.get("userbook/api/person?id=" + id);
     if (related) return data.result.map((p) => p.relatedName);
